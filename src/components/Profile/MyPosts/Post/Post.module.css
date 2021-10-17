@@ -1,14 +1,8 @@
-
-.Post{
-  grid-area: p;
-  background-color: rgb(120, 121, 131);
-}
-
 .item {
   color: rgb(126, 42, 165);
   font-weight: bold;
 }
 
 .item img{
-  width: 50px;
+  width: 20px;
 }
