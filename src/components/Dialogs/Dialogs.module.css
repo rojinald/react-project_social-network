@@ -1,11 +1,14 @@
-.content{
+.content {
     display: grid;
     grid-template-columns: 2fr 5fr;
 }
-.dialogsItem{
+.dialogsItem {
     padding: 20px;
 }
+.dialogsItem a {
+    text-decoration: none;
+}
 
-.dialogsMessages{
+.dialogsMessages {
     padding: 20px;
 }
