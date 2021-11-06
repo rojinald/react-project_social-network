@@ -12,3 +12,13 @@
 .item a.activeLink {
   color: rgb(41, 15, 185);
 }
+
+.friendsBlock {
+  padding: 20px 0 0 0;
+}
+.friendsTitle {
+  font-size: 20px;
+  padding: 0 0 5px 0;
+}
+.friendsIcon {
+}
