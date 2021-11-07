@@ -1,7 +1,7 @@
 .nav {
   grid-area: n;
   background-color: rgb(194, 188, 173);
-  padding: 15px;
+  padding: 25px;
 }
 .item a {
   color: aliceblue;
@@ -13,12 +13,16 @@
   color: rgb(41, 15, 185);
 }
 
-.friendsBlock {
-  padding: 20px 0 0 0;
+.friendsIconBlock {
+  margin: 20px 0 0 0;
+  max-width: 120px;
+  max-height: 130px;
+  overflow: hidden;
 }
-.friendsTitle {
+.friendsIconTitle {
   font-size: 20px;
   padding: 0 0 5px 0;
+  position: relative;
 }
 .friendsIcon {
 }

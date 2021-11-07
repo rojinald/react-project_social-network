@@ -3,7 +3,7 @@
 }
 
 .friendsItem {
-   padding: 0 2.5px 2.5px 0;
+   padding: 2.5px;
 }
 
 .friendUserAvatar img {
@@ -15,6 +15,6 @@
 
 .friendUserName {
    font-size: 6px;
-   color: rgb(46, 48, 46);
+   color: rgb(102, 110, 102);
    font-weight: bold;
 }
