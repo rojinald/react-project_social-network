@@ -1,3 +1,4 @@
+import { reRender } from "../render";
 
 let state = {
    profilePage: {
@@ -22,7 +23,7 @@ let state = {
          { id: 5, name: 'Шпиц', img: 'https://sun9-9.userapi.com/impf/Rc_cafcy2i0gvFB_D93VZuJWEQO6kr-KAhp4Zw/uF6JVyDWbCY.jpg?size=604x604&quality=96&sign=dde08087567a35f8cf516e2b14f7775c&type=album' }
       ],
    },
-   friendsPage: {
+   friendsSideBar: {
       friends: [
          { id: 1, name: 'Корги', img: 'https://porodisobak.ru/wp-content/uploads/2021/07/velsh-korgi-pembrok-11.jpg' },
          { id: 2, name: 'Овчарка', img: 'https://nekusaka.com/wp-content/uploads/2017/02/german_shepherd14.jpg' },
@@ -32,6 +33,16 @@ let state = {
 
       ]
    }
+}
+
+export let addPost = (postMessage) => {
+   let newPost = {
+      id: 3,
+      message: postMessage,
+      likesCount: 0
+   };
+   state.profilePage.posts.push(newPost);
+   reRender(state);
 }
 
 export default state;
