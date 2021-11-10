@@ -5,7 +5,8 @@ let state = {
       posts: [
          { id: 1, message: 'Давай дружить!', likesCount: 50 },
          { id: 2, message: 'Это мой первый пост :)', likesCount: 10 },
-      ]
+      ],
+      newPostText : 'test'
    },
    dialogsPage: {
       messages: [
@@ -44,5 +45,11 @@ export let addPost = (postMessage) => {
    state.profilePage.posts.push(newPost);
    reRender(state);
 }
+
+export let updateNewPostText = (newText) => {
+   state.profilePage.newPostText = newText;
+   reRender(state);
+}
+
 
 export default state;
