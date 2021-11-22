@@ -20,7 +20,14 @@ const Dialogs = (props) => {
         </div>
         <div className={s.dialogsMessages}>
             {MessagesElements}
+            <div>
+            <textarea />
+            <div>
+            <button>Отправить сообщение</button>
+            </div>
         </div>
+        </div>
+
     </div>
 };
 
