@@ -2,11 +2,6 @@ import dialogReducer from "./dialog-reducer";
 import friendsSideBarReducer from "./friendsSideBar-reducer";
 import profileReducer from "./profile-reducer";
 
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_MESSAGE = 'ADD-MESSAGE';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
-
 let store = {
    _state: {
       profilePage: {
@@ -60,23 +55,18 @@ let store = {
       this._callSubsciber = observer;
    },
 
-   dispatch(action) { 
+   dispatch(action) {
 
       this._state.profilePage = profileReducer(this._state.profilePage, action);
       this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action);
       this._state.friendsSideBar = friendsSideBarReducer(this._state.friendsSideBar, action);
-      
-         this._callSubsciber(this._state);
-      }
+
+      this._callSubsciber(this._state);
+   }
 
 
 }
 
-export let addPostActionCreator = () => ({ type: ADD_POST });
-export let updatePostActionCreator = (text) => ({ type: UPDATE_NEW_POST_TEXT, newText: text });
-
-export let addMessageActionCreator = () => ({ type: ADD_MESSAGE });
-export let updateMessageActionCreator = (text) => ({ type: UPDATE_NEW_MESSAGE_TEXT, newText: text });
 
 export default store;
 window.store = store;
