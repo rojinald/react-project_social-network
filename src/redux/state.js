@@ -1,3 +1,7 @@
+import dialogReducer from "./dialog-reducer";
+import friendsSideBarReducer from "./friendsSideBar-reducer";
+import profileReducer from "./profile-reducer";
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const ADD_MESSAGE = 'ADD-MESSAGE';
@@ -56,32 +60,14 @@ let store = {
       this._callSubsciber = observer;
    },
 
-   dispatch(action) { // { type :'ADD-POST'}
-      if (action.type === 'ADD-POST') {
-         let newPost = {
-            id: 3,
-            message: this._state.profilePage.newPostText,
-            likesCount: 0
-         };
-         this._state.profilePage.posts.push(newPost);
-         this._state.profilePage.newPostText = '';
-         this._callSubsciber(this._state);
-      } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
-         this._state.profilePage.newPostText = action.newText;
-         this._callSubsciber(this._state);
-      } else if (action.type === 'ADD-MESSAGE') {
-         let newMessage = {
-            id: 6,
-            message: this._state.dialogsPage.newMessageText,
-         };
-         this._state.dialogsPage.messages.push(newMessage);
-         this._state.dialogsPage.newMessageText = '';
-         this._callSubsciber(this._state);
-      } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
-         this._state.dialogsPage.newMessageText = action.newText;
+   dispatch(action) { 
+
+      this._state.profilePage = profileReducer(this._state.profilePage, action);
+      this._state.dialogsPage = dialogReducer(this._state.dialogsPage, action);
+      this._state.friendsSideBar = friendsSideBarReducer(this._state.friendsSideBar, action);
+      
          this._callSubsciber(this._state);
       }
-   },
 
 
 }
