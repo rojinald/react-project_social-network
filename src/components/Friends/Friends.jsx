@@ -4,8 +4,7 @@ import s from './Friends.module.css'
 
 const Friends = (props) => {
 
-
-    let friendsIconElements = props.state.friends
+    let friendsIconElements = props.friendsSideBar.friends
         .map(d => <FriendsIcon name={d.name} id={d.id} img={d.img} />);
 
     return <div className={s.content}>
