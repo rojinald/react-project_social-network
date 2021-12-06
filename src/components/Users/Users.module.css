@@ -1,0 +1,9 @@
+.userPhoto {
+    width: 100px;
+    height: 100px;
+    margin-right: 5px;
+}
+.userItem {
+    display: flex;
+    padding: 10px;
+}
