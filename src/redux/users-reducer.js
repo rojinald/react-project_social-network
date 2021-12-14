@@ -4,18 +4,7 @@ const SET_USERS = 'SET_USERS';
 
 
 let initialState = {
-   users: [
-      { id: 1, followed: true, name: 'Корги', surname: "Милашечкин", img: 'https://porodisobak.ru/wp-content/uploads/2021/07/velsh-korgi-pembrok-11.jpg', status: "Я люблю носиться по дому!", location: { country: "Russia", city: "Saint-Petersburg" } },
-      { id: 2, followed: false, name: 'Ориентал', surname: "Милашечкин", img: 'https://porodisobak.ru/wp-content/uploads/2021/07/velsh-korgi-pembrok-11.jpg', status: "Я люблю носиться по дому!", location: { country: "Russia", city: "Saint-Petersburg" } },
-      { id: 3, followed: true, name: 'Алабай', surname: "Милашечкин", img: 'https://porodisobak.ru/wp-content/uploads/2021/07/velsh-korgi-pembrok-11.jpg', status: "Я люблю носиться по дому!", location: { country: "Russia", city: "Saint-Petersburg" } },
-      { id: 4, followed: false, name: 'Мейн-кун', surname: "Милашечкин", img: 'https://porodisobak.ru/wp-content/uploads/2021/07/velsh-korgi-pembrok-11.jpg', status: "Я люблю носиться по дому!", location: { country: "Russia", city: "Saint-Petersburg" } },
-      { id: 5, followed: true, name: 'Мопс', surname: "Милашечкин", img: 'https://porodisobak.ru/wp-content/uploads/2021/07/velsh-korgi-pembrok-11.jpg', status: "Я люблю носиться по дому!", location: { country: "Russia", city: "Saint-Petersburg" } },
-      { id: 6, followed: true, name: 'Каракал', surname: "Милашечкин", img: 'https://porodisobak.ru/wp-content/uploads/2021/07/velsh-korgi-pembrok-11.jpg', status: "Я люблю носиться по дому!", location: { country: "Russia", city: "Saint-Petersburg" } },
-      { id: 7, followed: false, name: 'Хаски', surname: "Милашечкин", img: 'https://porodisobak.ru/wp-content/uploads/2021/07/velsh-korgi-pembrok-11.jpg', status: "Я люблю носиться по дому!", location: { country: "Russia", city: "Saint-Petersburg" } },
-      { id: 8, followed: true, name: 'Сервал', surname: "Милашечкин", img: 'https://porodisobak.ru/wp-content/uploads/2021/07/velsh-korgi-pembrok-11.jpg', status: "Я люблю носиться по дому!", location: { country: "Russia", city: "Saint-Petersburg" } },
-      { id: 9, followed: false, name: 'Пудель', surname: "Милашечкин", img: 'https://porodisobak.ru/wp-content/uploads/2021/07/velsh-korgi-pembrok-11.jpg', status: "Я люблю носиться по дому!", location: { country: "Russia", city: "Saint-Petersburg" } },
-
-   ],
+   users: [],
 }
 
 const usersReducer = (state = initialState, action) => {
