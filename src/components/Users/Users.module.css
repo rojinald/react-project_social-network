@@ -7,3 +7,7 @@
     display: flex;
     padding: 10px;
 }
+
+.selectedPage {
+    font-weight: bold;
+}
