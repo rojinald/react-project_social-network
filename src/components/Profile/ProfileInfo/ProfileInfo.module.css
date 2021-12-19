@@ -1,3 +1,7 @@
 .profileAvatar {
   padding: 10px;
 }
+.profileCover {
+  width: 1000px;
+  height: 250px;
+}

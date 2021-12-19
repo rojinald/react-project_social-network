@@ -1,4 +1,4 @@
-.userPhoto {
+.photos {
     width: 100px;
     height: 100px;
     margin-right: 5px;
@@ -10,4 +10,8 @@
 
 .selectedPage {
     font-weight: bold;
+}
+
+.usersWrapper {
+    max-width: 1000px;
 }
