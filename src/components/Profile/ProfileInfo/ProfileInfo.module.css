@@ -1,7 +1,14 @@
-.profileAvatar {
-  padding: 10px;
-}
 .profileCover {
   width: 1000px;
   height: 250px;
+}
+.profileItem {
+  padding: 10px;
+  display: flex;
+}
+.profileAvatar {
+  margin-right: 10px;
+}
+.profileName {
+  font-weight: bold;
 }
