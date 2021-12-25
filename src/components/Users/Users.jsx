@@ -4,7 +4,6 @@ import userPhoto from '../../assets/images/users.png'
 import { NavLink } from "react-router-dom/cjs/react-router-dom.min";
 
 let Users = (props) => {
-
    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
    let pages = [];
@@ -27,7 +26,10 @@ let Users = (props) => {
                   </NavLink>
                </div>
                <div>
-                  {u.followed ? <button onClick={() => { props.unfollow(u.id) }} >Follow</button> : <button onClick={() => { props.follow(u.id) }}>Unfollow</button>}
+                  {u.followed
+                     ? <button onClick={() => { props.subscriptionUnfollow(u.id) }} >unfollow</button>
+                     : <button onClick={() => { props.subscriptionFollow(u.id) }} >follow</button>
+                  }
                </div>
             </span>
             <span>
@@ -40,9 +42,9 @@ let Users = (props) => {
                   <div>{"u.location.city"}</div>
                </span>
             </span>
-         </div>)
+         </div >)
       }
-   </div>
+   </div >
 }
 
 export default Users;
