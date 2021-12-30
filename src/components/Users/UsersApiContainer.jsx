@@ -25,20 +25,24 @@ class UsersApiContainer extends React.Component {
     }
 
     subscriptionUnfollow = (userId) => {
+        this.props.toggleFollowingProgress(true, userId);
         userAPI.deleteSubscription(userId)
             .then(data => {
                 if (data.resultCode == 0) {
                     this.props.unfollow(userId)
                 }
+                this.props.toggleFollowingProgress(false, userId);
             })
     }
 
     subscriptionFollow = (userId) => {
+        this.props.toggleFollowingProgress(true, userId);
         userAPI.postSubscription(userId)
             .then(data => {
                 if (data.resultCode == 0) {
                     this.props.follow(userId)
                 }
+                this.props.toggleFollowingProgress(false, userId);
             })
     }
     render() {

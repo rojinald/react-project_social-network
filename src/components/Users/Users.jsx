@@ -27,8 +27,8 @@ let Users = (props) => {
                </div>
                <div>
                   {u.followed
-                     ? <button onClick={() => { props.subscriptionUnfollow(u.id) }} >unfollow</button>
-                     : <button onClick={() => { props.subscriptionFollow(u.id) }} >follow</button>
+                     ? <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => { props.subscriptionUnfollow(u.id) }} >unfollow</button>
+                     : <button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => { props.subscriptionFollow(u.id) }} >follow</button>
                   }
                </div>
             </span>
