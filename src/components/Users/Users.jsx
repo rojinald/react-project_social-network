@@ -14,7 +14,7 @@ let Users = (props) => {
    return <div className={s.usersWrapper}>
       <div>
          {pages.map(p => {
-            return <span className={props.currentPage === p && s.selectedPage} onClick={(e) => { props.onPageChanged(p) }}>{p}</span>
+            return <span className={props.currentPage === p && s.selectedPage} onClick={(e) => { props.pageChange(p, props.pageSize) }}>{p}</span>
          })}
       </div>
       {
