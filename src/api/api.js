@@ -41,9 +41,11 @@ export const profileAPI = {
    }
 }
 
-export const getAuthData = () => {
-   return instance.get("auth/me")
-      .then(response => {
-         return response.data
-      })
+export const authApi = {
+   getAuthData() {
+      return instance.get("auth/me")
+         .then(response => {
+            return response.data
+         })
+   }
 }
