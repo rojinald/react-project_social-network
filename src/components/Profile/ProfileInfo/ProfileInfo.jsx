@@ -1,5 +1,7 @@
 import Preloader from "../../common/Preloader/Preloader";
 import s from "./ProfileInfo.module.css"
+import ProfileStatus from "./ProfileStatus/ProfileStatus";
+
 
 
 
@@ -11,15 +13,17 @@ const ProfileInfo = (props) => {
         return <Preloader />
     }
     return <div>
-        <div >
+        {/*     <div >
             <img className={s.profileCover} src='https://oboi.ws/wallpapers/28_6867_oboi_travjanoj_zakat_2560x1024.jpg'></img>
-        </div>
+        </div> */}
+
         <div className={s.profileItem}>
 
             <div className={s.profileAvatar}>
                 <img src={props.profile.photos.large}></img>
             </div>
             <div className={s.profileInfo}>
+                <ProfileStatus status="test" />
                 <div className={s.profileName}>
                     {props.profile.fullName}
                 </div>
@@ -29,7 +33,7 @@ const ProfileInfo = (props) => {
                 <div className={s.profileJob}>
                     {props.profile.lookingForAJobDescription}
                 </div>
-                <div className={s.profileJob}>
+                <div className={s.profileSocialNetwork}>
                     {props.profile.contacts.vk}
                 </div>
             </div>
