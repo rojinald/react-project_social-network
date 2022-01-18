@@ -32,9 +32,23 @@ export const userAPI = {
          })
    },
 }
+
+
 export const profileAPI = {
    getUserProfile(userId) {
       return instance.get(`profile/` + userId)
+         .then(response => {
+            return response.data;
+         })
+   },
+   getUserStatus(userId) {
+      return instance.get(`profile/status/` + userId)
+         .then(response => {
+            return response.data;
+         })
+   },
+   updateUserStatus(status) {
+      return instance.put(`profile/status`, { status: status })
          .then(response => {
             return response.data;
          })
