@@ -1,37 +1,40 @@
 import React from 'react';
-import Field from 'redux-form/lib/Field';
-import reduxForm from 'redux-form/lib/reduxForm';
-
-const LoginForm = (props) => {
-   return <form onSubmit={props.handleSubmit} >
-      <div>
-         <Field placeholder={'Login'} component={'input'} name={'login'} />
-      </div>
-      <div>
-         <Field placeholder={'Password'} component={'input'} name={'pasword'} />
-      </div>
-      <div>
-         <Field component={'input'} type={'checkbox'} name={'rememberMe'} /> remember me
-      </div>
-      <div>
-         <button>Login</button>
-      </div>
-   </form>
-}
-
-const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm)
+import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 const Login = (props) => {
-   const onSubmit = (formData) => {
-      console.log(formData)
-   }
-
    return <div>
       <h1>Login</h1>
-      <LoginReduxForm onSubmit={onSubmit} />
+      <LoginForm />
    </div>
 }
 
+
+
+const LoginForm = () => {
+   const submit = (values, { setSubmitting }) => {
+      setTimeout(() => {
+         console.log(JSON.stringify(values, null, 2));
+         setSubmitting(false);
+      }, 400);
+   }
+   return <Formik
+      initialValues={{ email: '', password: '' }}
+      onSubmit={submit}
+   >
+      {({ isSubmitting }) => (
+         <Form>
+            <div>
+               <Field type="email" name="email" />
+            </div>
+            <Field type="password" name="password" />
+            <Field type="checkbox" name="rememberMe" />
+            <button type="submit" disabled={isSubmitting}>
+               Submit
+            </button>
+         </Form>
+      )}
+   </Formik>
+}
 
 
 export default Login;
