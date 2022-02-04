@@ -13,16 +13,13 @@ const Dialogs = (props) => {
     let MessagesElements = props.dialogsPage.messages
         .map(m => <DialogMessage message={m.message} />);
 
-    let addNewMessage = (value) => {
-        props.addMessage(value.dialogsNewMessageBody)
-    }
 
     return <div className={s.content}>
         <div className={s.dialogsItem}>
             {dialogsElements}
         </div>
         <div>
-            <AddMessageForm onSubmit={addNewMessage} />
+            <AddMessageForm addMessage={props.addMessage} />
             <div className={s.dialogsMessages}>
                 {MessagesElements}
             </div>
@@ -31,12 +28,11 @@ const Dialogs = (props) => {
     </div>
 };
 
-const AddMessageForm = () => {
+const AddMessageForm = (props) => {
     const submit = (values, { setSubmitting }) => {
-        setTimeout(() => {
-            console.log(JSON.stringify(values, null, 2));
+        props.addMessage(values.addMessageText)
+        values.addMessageText =''
             setSubmitting(false);
-        }, 400);
     }
     return <Formik
         initialValues={{ addMessageText: '' }}

@@ -10,19 +10,18 @@ const MyPosts = (props) => {
   let postsElements = props.posts.map(p => <Post message={p.message} likeCount={p.likesCount} />)
   return <div className={s.postsBlock}>
     <div> My posts </div>
-    <AddPostForm />
+    <AddPostForm addPost={props.addPost} />
     <div className={s.posts}>
       {postsElements}
     </div >
   </div >
 };
 
-const AddPostForm = () => {
+const AddPostForm = (props) => {
   const submit = (values, { setSubmitting }) => {
-    setTimeout(() => {
-      console.log(JSON.stringify(values, null, 2));
+    props.addPost(values.addPostText)
+    values.addPostText=''
       setSubmitting(false);
-    }, 400);
   }
   return <Formik
     initialValues={{ addPostText: '' }}
