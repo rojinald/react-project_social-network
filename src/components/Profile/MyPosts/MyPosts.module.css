@@ -4,3 +4,11 @@
 .posts {
    margin-top: 10px;
 }
+.errorMessage {
+   border: 1px solid red;
+   background-color: rosybrown;
+}
+.textArea {
+   width: 200px;
+   height: 40px;
+}
