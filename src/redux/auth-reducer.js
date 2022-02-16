@@ -4,7 +4,7 @@ const SET_USER_DATA = 'SET_USER_DATA'
 
 
 let initialState = {
-   userID: null,
+   id: null,
    email: null,
    login: null,
    isAuth: false,
@@ -23,7 +23,7 @@ const authReducer = (state = initialState, action) => {
 
 }
 
-export const setAuthUserData = (userID, email, login, isAuth) => ({ type: SET_USER_DATA, data: { userID, email, login, isAuth } });
+export const setAuthUserData = (id, email, login, isAuth) => ({ type: SET_USER_DATA, data: { id, email, login, isAuth } });
 
 export const getAuth = () => {
    return (dispatch) => {
@@ -37,11 +37,14 @@ export const getAuth = () => {
    }
 }
 
-export const login = (email, password, rememberMe) => (dispatch) => {
+export const login = (email, password, rememberMe, setStatus) => (dispatch) => {
    authApi.login(email, password, rememberMe)
       .then(data => {
          if (data.resultCode === 0) {
             dispatch(getAuth());
+         }
+         else {
+            setStatus((data.messages))
          }
       });
 

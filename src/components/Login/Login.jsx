@@ -20,15 +20,19 @@ const Login = (props) => {
 
 
 const LoginForm = (props) => {
-   const submit = (values, { setSubmitting }) => {
-      props.login(values.email, values.password, values.rememberMe)
+   const submit = (values, { setSubmitting, setStatus }) => {
+      props.login(values.email, values.password, values.rememberMe, setStatus)
       setSubmitting(false)
    }
+
    return <Formik
       initialValues={{ email: '', password: '' }}
       onSubmit={submit}
       validate={values => {
          const errors = {};
+         if (!values.password) {
+            errors.password = 'Required';
+         }
          if (!values.password) {
             errors.password = 'Required';
          }
@@ -42,9 +46,13 @@ const LoginForm = (props) => {
          return errors;
       }}
    >
-      {({ isSubmitting, touched, errors }) => (
+      {({ isSubmitting, touched, errors, status }) => (
          <Form>
-            <div>
+            <div>{status
+               ? <div className={s.errorApi} >{status}</div>
+               : null
+            }
+
                <Field className={s.input} id={touched.email && errors.email ? s.inputEffect : null} type="email" name="email" placeholder='email' />
                <ErrorMessage name="email" component="div" />
             </div>
@@ -55,6 +63,7 @@ const LoginForm = (props) => {
                Submit
             </button>
          </Form>
+
       )}
    </Formik>
 }
@@ -64,3 +73,4 @@ const mapStateToProps = (state) => ({
 })
 
 export default connect(mapStateToProps, { login })(Login)
+
