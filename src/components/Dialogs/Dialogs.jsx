@@ -8,7 +8,7 @@ import CustomTextArea from '../common/CustomTextArea/CustomTextArea';
 
 const Dialogs = (props) => {
     let dialogsElements = props.dialogsPage.dialogs
-        .map(d => <DialogItem name={d.name} id={d.id} img={d.img} />);
+        .map(d => <DialogItem name={d.name} id={d.id} img={d.img} key={d.id} />);
 
     let MessagesElements = props.dialogsPage.messages
         .map(m => <DialogMessage message={m.message} />);

@@ -61,5 +61,17 @@ export const authApi = {
          .then(response => {
             return response.data
          })
+   },
+   login(email, password, rememberMe, captcha = true) {
+      return instance.post("auth/login", { email, password, rememberMe, captcha })
+         .then(response => {
+            return response.data
+         })
+   },
+   logout() {
+      return instance.delete("auth/login")
+         .then(response => {
+            return response.data
+         })
    }
 }
