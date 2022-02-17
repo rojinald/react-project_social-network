@@ -5,21 +5,22 @@ import { getProfile, getStatus, updateStatus } from '../../redux/profile-reducer
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
 import { withRouter } from 'react-router-dom';
+import { useEffect } from 'react';
 
 
-class ProfileContainer extends React.Component {
-    componentDidMount() {
-        let userId = this.props.match.params.userId;
+const ProfileContainer = (props) => {
+    useEffect(() => {
+        let userId = props.match.params.userId;
         if (!userId) {
-            userId = this.props.authUserId;
+            userId = props.authUserId;
+            if (!userId) { props.history.push('/login') }
         }
-        this.props.getProfile(userId);
-        this.props.getStatus(userId)
-    }
+        props.getProfile(userId);
+        props.getStatus(userId)
 
-    render() {
-        return <Profile {...this.props} profile={this.props.profile} status={this.props.status} updateStatus={this.props.updateStatus} />
-    }
+    }, [props.authUserId])
+
+    return <Profile {...props} profile={props.profile} status={props.status} updateStatus={props.updateStatus} />
 }
 
 
