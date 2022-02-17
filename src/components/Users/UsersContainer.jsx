@@ -1,15 +1,16 @@
 import { connect } from 'react-redux';
-import { follow, unfollow, setCurrentPage, setUsersTotalCount, toggleFollowingProgress, getUsers, pageChange, subscriptionUnfollow, subscriptionFollow } from '../../redux/users-reducer';
+import { getUsers, pageChange, subscriptionUnfollow, subscriptionFollow } from '../../redux/users-reducer';
+import { getUsersSelector, getPageSizeSelector, getTotalUsersCountSelector, getIsFetchingSelector, getFollowingInProgressSelector, getCurrentPageSelector } from '../../redux/users-selectors';
 import UsersApiContainer from './UsersApiContainer';
 
 const mapStateToProps = (state) => {
     return {
-        users: state.usersPage.users,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        currentPage: state.usersPage.currentPage,
-        isFetching: state.usersPage.isFetching,
-        followingInProgress: state.usersPage.followingInProgress
+        users: getUsersSelector(state),
+        pageSize: getPageSizeSelector(state),
+        totalUsersCount: getTotalUsersCountSelector(state),
+        currentPage: getCurrentPageSelector(state),
+        isFetching: getIsFetchingSelector(state),
+        followingInProgress: getFollowingInProgressSelector(state)
     }
 };
 
