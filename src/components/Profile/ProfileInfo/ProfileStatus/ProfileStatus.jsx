@@ -1,54 +1,39 @@
 import React from 'react';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 
-class ProfileStatus extends React.Component {
-   statusInputRef = React.createRef();
+const ProfileStatus = (props) => {
+   const [editMode, setEditMode] = useState(false)
+   const [status, setStatus] = useState(props.status)
 
-   state = {
-      editMode: false,
-      status: this.props.status
+   const activateEditMode = () => {
+      setEditMode(true)
    }
-
-   activateEditMode = () => {
-      this.setState({
-         editMode: true
-      })
+   const deactivateEditMode = () => {
+      debugger;
+      setEditMode(false)
+      props.updateStatus(status)
    }
-   deactivateEditMode = () => {
-      this.setState({
-         editMode: false
-      })
-      this.props.updateStatus(this.state.status)
-   }
-   onStatusChange = (e) => {
-      this.setState({
-         status: e.currentTarget.value
-      })
+   const onStatusChange = (e) => {
+      setStatus(e.currentTarget.value)
    }
 
-   componentDidUpdate(prevProps, prevState) {
-      if (prevProps.status !== this.props.status)
-         this.setState({
-            status: this.props.status
-         })
-   }
 
-   render() {
-      return (
-         <div>
-            {!this.state.editMode
-               ?
-               <div>
-                  <span onDoubleClick={this.activateEditMode} >{this.props.status || "No Status"}</span>
-               </div >
-               :
-               <div>
-                  <input onChange={this.onStatusChange} autoFocus={true} onBlur={this.deactivateEditMode} value={this.state.status} />
-               </div>
-            }
-         </div >
-      )
-   }
+   return (
+      <div>
+         {!editMode
+            ?
+            <div>
+               <span onDoubleClick={activateEditMode} >{props.status || "No Status"}</span>
+            </div >
+            :
+            <div>
+               <input onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode} value={status} />
+            </div>
+         }
+      </div >
+   )
 }
 
 export default ProfileStatus;
