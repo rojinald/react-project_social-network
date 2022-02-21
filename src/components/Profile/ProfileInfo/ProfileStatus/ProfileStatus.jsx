@@ -15,7 +15,6 @@ const ProfileStatus = (props) => {
       setEditMode(true)
    }
    const deactivateEditMode = () => {
-      debugger;
       setEditMode(false)
       props.updateStatus(status)
    }

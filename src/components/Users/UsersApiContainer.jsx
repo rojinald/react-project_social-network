@@ -6,7 +6,8 @@ import Users from './Users';
 
 class UsersApiContainer extends React.Component {
     componentDidMount() {
-        this.props.getUsers(this.props.currentPage, this.props.pageSize);
+        const { currentPage, pageSize, getUsers } = this.props
+        getUsers(currentPage, pageSize);
     }
     render() {
         return <>
