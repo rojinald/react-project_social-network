@@ -73,51 +73,36 @@ export const setUsersTotalCount = (totalUsersCount) => ({ type: SET_TOTAL_COUNT,
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 export const toggleFollowingProgress = (isFetching, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId });
 
-export const getUsers = (currentPage, pageSize) => {
-   return (dispatch) => {
-      dispatch(toggleIsFetching(true));
-      userAPI.getUsers(currentPage, pageSize).then(data => {
-         dispatch(toggleIsFetching(false));
-         dispatch(setUsers(data.items));
-         dispatch(setUsersTotalCount(data.totalCount));
-      });
-   }
+export const getUsers = (currentPage, pageSize) => async (dispatch) => {
+   dispatch(toggleIsFetching(true));
+   let data = await userAPI.getUsers(currentPage, pageSize)
+   dispatch(toggleIsFetching(false));
+   dispatch(setUsers(data.items));
+   dispatch(setUsersTotalCount(data.totalCount));
 }
-export const pageChange = (pageNumber, pageSize) => {
-   return (dispatch) => {
-      dispatch(setCurrentPage(pageNumber));
-      dispatch(toggleIsFetching(true));
-      userAPI.getChangePage(pageNumber, pageSize)
-         .then(data => {
-            dispatch(toggleIsFetching(false));
-            dispatch(setUsers(data.items));
-         });
-   }
+export const pageChange = (pageNumber, pageSize) => async (dispatch) => {
+   dispatch(setCurrentPage(pageNumber));
+   dispatch(toggleIsFetching(true));
+   let data = await userAPI.getChangePage(pageNumber, pageSize)
+   dispatch(toggleIsFetching(false));
+   dispatch(setUsers(data.items));
 }
 
-export const subscriptionUnfollow = (userId) => {
-   return (dispatch) => {
-      dispatch(toggleFollowingProgress(true, userId));
-      userAPI.deleteSubscription(userId)
-         .then(data => {
-            if (data.resultCode == 0) {
-               dispatch(unfollow(userId))
-            }
-            dispatch(toggleFollowingProgress(false, userId));
-         })
+export const subscriptionUnfollow = (userId) => async (dispatch) => {
+   dispatch(toggleFollowingProgress(true, userId));
+   let data = await userAPI.deleteSubscription(userId)
+   if (data.resultCode == 0) {
+      dispatch(unfollow(userId))
    }
+   dispatch(toggleFollowingProgress(false, userId));
 }
 
-export const subscriptionFollow = (userId) => {
-   return (dispatch) => {
-      dispatch(toggleFollowingProgress(true, userId));
-      userAPI.postSubscription(userId)
-         .then(data => {
-            if (data.resultCode == 0) {
-               dispatch(follow(userId))
-            }
-            dispatch(toggleFollowingProgress(false, userId));
-         })
+export const subscriptionFollow = (userId) => async (dispatch) => {
+   dispatch(toggleFollowingProgress(true, userId));
+   let data = await userAPI.postSubscription(userId)
+   if (data.resultCode == 0) {
+      dispatch(follow(userId))
    }
+   dispatch(toggleFollowingProgress(false, userId));
 }
 export default usersReducer;

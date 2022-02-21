@@ -59,31 +59,20 @@ export const setUserStatus = (status) => ({ type: SET_USER_STATUS, status });
 export const updateUserStatus = (status) => ({ type: UPDATE_USER_STATUS, status });
 export const deletePost = (postId) => ({ type: DELETE_POST, postId });
 
-export const getProfile = (userId) => {
-   return (dispatch) => {
-      profileAPI.getUserProfile(userId).then(data => {
-         dispatch(setUserProfile(data));
-      });
-   }
+export const getProfile = (userId) => async (dispatch) => {
+   let data = await profileAPI.getUserProfile(userId);
+   dispatch(setUserProfile(data));
 }
 
-export const getStatus = (userId) => {
-   return (dispatch) => {
-      profileAPI.getUserStatus(userId)
-         .then(data => {
-            dispatch(setUserStatus(data));
-         });
-   }
+export const getStatus = (userId) => async (dispatch) => {
+   let data = await profileAPI.getUserStatus(userId);
+   dispatch(setUserStatus(data));
 }
 
-export const updateStatus = (status) => {
-   return (dispatch) => {
-      profileAPI.updateUserStatus(status)
-         .then(data => {
-            if (data.resultCode === 0)
-               dispatch(updateUserStatus(status));
-         });
-   }
+export const updateStatus = (status) => async (dispatch) => {
+   let data = await profileAPI.updateUserStatus(status)
+   if (data.resultCode === 0)
+      dispatch(updateUserStatus(status));
 }
 
 export default profileReducer;
