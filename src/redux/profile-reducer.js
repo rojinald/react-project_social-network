@@ -4,6 +4,8 @@ const ADD_POST = 'ADD_POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_USER_STATUS = 'SET_USER_STATUS';
 const UPDATE_USER_STATUS = 'UPDATE_USER_STATUS';
+const DELETE_POST = 'DELETE_POST';
+
 
 let initialState = {
    posts: [
@@ -19,7 +21,7 @@ const profileReducer = (state = initialState, action) => {
       case ADD_POST:
          return {
             ...state,
-            posts: [...state.posts, { id: 3, message: action.text,likesCount: 0 }]
+            posts: [...state.posts, { id: 3, message: action.text, likesCount: 0 }]
          };
       case SET_USER_PROFILE:
          return {
@@ -37,6 +39,12 @@ const profileReducer = (state = initialState, action) => {
             ...state,
             status: action.status
          }
+      };
+      case DELETE_POST: {
+         return {
+            ...state,
+            posts: state.posts.filter(p => p.id != action.postId)
+         }
       }
 
 
@@ -45,10 +53,11 @@ const profileReducer = (state = initialState, action) => {
    }
 }
 
-export const addPostActionCreator = (text) => ({ type: ADD_POST,text});
+export const addPostActionCreator = (text) => ({ type: ADD_POST, text });
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 export const setUserStatus = (status) => ({ type: SET_USER_STATUS, status });
 export const updateUserStatus = (status) => ({ type: UPDATE_USER_STATUS, status });
+export const deletePost = (postId) => ({ type: DELETE_POST, postId });
 
 export const getProfile = (userId) => {
    return (dispatch) => {
