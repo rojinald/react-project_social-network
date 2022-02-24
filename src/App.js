@@ -5,15 +5,17 @@ import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
 import Friends from './components/Friends/Friends';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
-import UsersContainer from './components/Users/UsersContainer';
-import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { initializeApp } from './redux/app-reducer'
 import Preloader from './components/common/Preloader/Preloader';
+
+
+const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
+const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'))
+const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'))
 
 
 const App = (props) => {
@@ -30,9 +32,9 @@ const App = (props) => {
       <HeaderContainer />
       <Navbar />
       <div className="app-wrapper-content">
-        <Route path='/profile/:userId?' render={() => <ProfileContainer />} />
-        <Route path='/dialogs' render={() => <DialogsContainer />} />
-        <Route path='/users' render={() => <UsersContainer />} />
+        <Route path='/profile/:userId?' render={withSuspense(ProfileContainer)} />
+        <Route path='/dialogs' render={withSuspense(DialogsContainer)} />
+        <Route path='/users' render={withSuspense(UsersContainer)} />
         {/* <Route path='/friends' render={() => <Friends state={props.state.friendsPage} />} /> */}
         <Route path="/news" component={News} />
         <Route path="/music" component={Music} />
