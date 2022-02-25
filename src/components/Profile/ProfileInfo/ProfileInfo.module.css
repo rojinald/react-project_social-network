@@ -1,13 +1,16 @@
-.profileCover {
-  width: 1000px;
-  height: 250px;
-}
 .profileItem {
   padding: 10px;
   display: flex;
 }
 .profileAvatar {
   margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+}
+.profileAvatar img {
+  width: 150px;
+  height: 150px;
+  border-radius: 20%;
 }
 .profileName {
   font-weight: bold;

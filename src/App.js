@@ -11,6 +11,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { initializeApp } from './redux/app-reducer'
 import Preloader from './components/common/Preloader/Preloader';
+import { withSuspense } from './hoc/withSuspense';
 
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'))
