@@ -15,3 +15,12 @@
 .profileName {
   font-weight: bold;
 }
+.addFotoForm {
+  margin-top: 25px;
+}
+.profileInfoContacts {
+  padding-left: 10px;
+}
+.profileStatus {
+  width: 250px;
+}

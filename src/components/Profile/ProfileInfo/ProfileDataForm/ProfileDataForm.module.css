@@ -1,0 +1,17 @@
+.input {
+   width: 150px;
+   height: 20px;
+   color: rgb(0, 0, 0);
+}
+#inputEffect {
+   border: 2px solid rgb(247, 37, 37);
+   border-radius: 5px;
+   background-color: rgb(255, 202, 202);
+}
+.errorApi {
+   width: 200px;
+   height: auto;
+   border: 2px solid rgb(247, 37, 37);
+   border-radius: 5px;
+   background-color: rgb(255, 202, 202);
+}

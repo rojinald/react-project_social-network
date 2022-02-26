@@ -33,9 +33,6 @@ const LoginForm = (props) => {
          if (!values.password) {
             errors.password = 'Required';
          }
-         if (!values.password) {
-            errors.password = 'Required';
-         }
          if (!values.email) {
             errors.email = 'Required';
          } else if (

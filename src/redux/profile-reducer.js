@@ -8,7 +8,6 @@ const DELETE_POST = 'DELETE_POST';
 const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
 
 
-
 let initialState = {
    posts: [
       { id: 1, message: 'Давай дружить!', likesCount: 50 },
@@ -84,11 +83,19 @@ export const updateStatus = (status) => async (dispatch) => {
 }
 
 export const savePhoto = (file) => async (dispatch) => {
-   debugger;
-   debugger;
    let data = await profileAPI.savePhoto(file)
    if (data.resultCode === 0)
       dispatch(savePhotoSuccess(data.data.photos));
+}
+export const saveProfile = (profile, setStatus) => async (dispatch, getState) => {
+   debugger;
+   const userId = getState().auth.id
+   let data = await profileAPI.saveProfile(profile)
+   if (data.resultCode === 0)
+      dispatch(getProfile(userId));
+   else {
+      setStatus((data.messages))
+   }
 }
 
 export default profileReducer;
