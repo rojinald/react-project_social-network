@@ -9,19 +9,13 @@ const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto, savePr
     const [editMode, setEditMode] = useState(false)
     const submit = (formData, setStatus) => {
         saveProfile(formData, setStatus)
-            .then(() => {
-                setEditMode(false);
-            })
-
-
-
+        setEditMode(false)
     }
 
     if (!profile) {
         return <Preloader />
     }
     const onPhotoSelected = (e) => {
-        debugger;
         if (e.target.files.length) {
             savePhoto(e.target.files[0])
         }
@@ -54,7 +48,7 @@ const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto, savePr
 
 const Contact = ({ contactTitle, contactValue }) => {
     return <div >
-        <b>{contactTitle}</b> : {contactValue = "no"}
+        <b>{contactTitle}</b> : {contactValue}
     </div>
 }
 

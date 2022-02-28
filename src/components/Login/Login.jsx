@@ -13,20 +13,21 @@ const Login = (props) => {
 
    return <div>
       <h1>Login</h1>
-      <LoginForm login={props.login} />
+      <LoginForm login={props.login} captchaUrl={props.captchaUrl} />
    </div>
 }
 
 
 
 const LoginForm = (props) => {
+   debugger;
    const submit = (values, { setSubmitting, setStatus }) => {
-      props.login(values.email, values.password, values.rememberMe, setStatus)
+      props.login(values.email, values.password, values.rememberMe, values.captcha, setStatus)
       setSubmitting(false)
    }
 
    return <Formik
-      initialValues={{ email: '', password: '' }}
+      initialValues={{ email: '', password: '', captcha: '' }}
       onSubmit={submit}
       validate={values => {
          const errors = {};
@@ -49,7 +50,13 @@ const LoginForm = (props) => {
                ? <div className={s.errorApi} >{status}</div>
                : null
             }
-
+               {props.captchaUrl &&
+                  <div> <div><img src={props.captchaUrl} /></div>
+                     <div>
+                        <Field className={s.input} id={touched.captcha && errors.captcha ? s.inputEffect : null} type="captcha" name="captcha" placeholder='Symbols from image' />
+                        <ErrorMessage name="captcha" component="span" />
+                     </div>
+                  </div>}
                <Field className={s.input} id={touched.email && errors.email ? s.inputEffect : null} type="email" name="email" placeholder='email' />
                <ErrorMessage name="email" component="div" />
             </div>
@@ -66,6 +73,7 @@ const LoginForm = (props) => {
 }
 
 const mapStateToProps = (state) => ({
+   captchaUrl: state.auth.captchaUrl,
    isAuth: state.auth.isAuth
 })
 

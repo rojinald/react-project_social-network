@@ -51,7 +51,7 @@ const ProfileDataForm = ({ submit, profile }) => {
 
                <div>
                   <b>Contacts</b> : {Object.keys(profile.contacts).map(key => {
-                     return <div>{key} <Field name={'contacts.' + key} placeholder={key} />
+                     return <div>{key} <Field type={'contacts.' + key} name={'contacts.' + key} placeholder={key} />
                         <ErrorMessage name={'contacts.' + key} component="span" />   </div>
                   })}
                </div>
