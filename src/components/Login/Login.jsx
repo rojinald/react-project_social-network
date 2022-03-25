@@ -20,7 +20,6 @@ const Login = (props) => {
 
 
 const LoginForm = (props) => {
-   debugger;
    const submit = (values, { setSubmitting, setStatus }) => {
       props.login(values.email, values.password, values.rememberMe, values.captcha, setStatus)
       setSubmitting(false)

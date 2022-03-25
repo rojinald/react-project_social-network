@@ -28,7 +28,7 @@ const ProfileStatus = (props) => {
          {!editMode
             ?
             <span>
-               <span onDoubleClick={activateEditMode} >{props.status || "No Status"}</span>
+               <span onDoubleClick={props.isOwner && activateEditMode} >{props.status || "No Status"}</span>
             </span >
             :
             <span>

@@ -29,7 +29,7 @@ const ProfileInfo = ({ profile, status, updateStatus, isOwner, savePhoto, savePr
             <div className={s.profileAvatar}>
                 <img src={profile.photos.small || userPhoto}></img>
                 <div className={s.profileStatus}>
-                    <b>Status</b> :  <ProfileStatus updateStatus={updateStatus} status={status} />
+                    <b>Status</b> :  <ProfileStatus updateStatus={updateStatus} status={status} isOwner={isOwner} />
                 </div>
                 <div className={s.addFotoForm}>{isOwner && <input type='file' onChange={onPhotoSelected} />}</div>
             </div>
